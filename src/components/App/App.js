@@ -26,11 +26,7 @@ const styles = theme => ({
     minHeight: "100vh"
   },
   appBar: {
-    position: "absolute",
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up("md")]: {
-      width: `calc(100% - ${drawerWidth}px)`
-    }
+    zIndex: theme.zIndex.drawer + 1
   },
   navIconHide: {
     [theme.breakpoints.up("md")]: {
