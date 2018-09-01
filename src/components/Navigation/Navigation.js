@@ -55,7 +55,7 @@ const Navigation = ({ classes }) => (
         <ListItemIcon>
           <QuestionAnswerIcon />
         </ListItemIcon>
-        FAQ
+        FAQs
       </ListItem>
     </List>
   </React.Fragment>

@@ -4,7 +4,7 @@ import Home from "../Home";
 import Tickets from "../Tickets";
 import Speakers from "../Speakers";
 import Team from "../Team";
-import FAQ from "../FAQ";
+import FAQs from "../FAQs";
 
 const Routes = () => (
   <Switch>
@@ -12,7 +12,7 @@ const Routes = () => (
     <Route exact path="/tickets" component={Tickets} />
     <Route exact path="/speakers" component={Speakers} />
     <Route exact path="/team" component={Team} />
-    <Route exact path="/faq" component={FAQ} />
+    <Route exact path="/faq" component={FAQs} />
   </Switch>
 );
 
