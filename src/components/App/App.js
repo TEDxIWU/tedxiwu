@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router";
 import Drawer from "@material-ui/core/Drawer";
@@ -7,8 +8,10 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Hidden from "@material-ui/core/Hidden";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 import Routes from "../Routes/Routes";
 import Navigation from "../Navigation";
@@ -21,29 +24,59 @@ const styles = theme => ({
     zIndex: 1,
     overflow: "hidden",
     position: "relative",
-    display: "flex",
-    width: "100%",
-    minHeight: "100vh"
+    display: "flex"
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
-  navIconHide: {
-    [theme.breakpoints.up("md")]: {
-      display: "none"
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 36
+  },
+  hide: {
+    display: "none"
+  },
+  drawer: {
+    height: "100vh"
+  },
+  drawerPaper: {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  drawerPaperClose: {
+    overflowX: "hidden",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    }),
+    width: theme.spacing.unit * 7,
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing.unit * 9
     }
   },
   toolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: "0 8px",
     ...theme.mixins.toolbar
-  },
-  desktopDrawer: {
-    height: "100%"
-  },
-  drawerPaper: {
-    width: drawerWidth,
-    [theme.breakpoints.up("md")]: {
-      position: "relative"
-    }
   },
   content: {
     flexGrow: 1,
@@ -56,33 +89,40 @@ class App extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
-  };
-
-  state = {
-    mobileOpen: false
-  };
-
-  handleDrawerToggle = () => {
-    this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+    location: PropTypes.object.isRequired,
+    openDrawer: PropTypes.bool.isRequired,
+    handleDrawerClose: PropTypes.func.isRequired,
+    handleDrawerOpen: PropTypes.func.isRequired
   };
 
   render() {
     const {
       classes,
       theme,
-      location: { pathname }
+      location: { pathname },
+      handleDrawerClose,
+      handleDrawerOpen,
+      openDrawer
     } = this.props;
 
     return (
       <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar}>
-          <Toolbar>
+        <AppBar
+          position="absolute"
+          className={classNames(
+            classes.appBar,
+            openDrawer && classes.appBarShift
+          )}
+        >
+          <Toolbar disableGutters={!openDrawer}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.navIconHide}
+              onClick={handleDrawerOpen}
+              className={classNames(
+                classes.menuButton,
+                openDrawer && classes.hide
+              )}
             >
               <MenuIcon />
             </IconButton>
@@ -91,35 +131,28 @@ class App extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Hidden mdUp>
-          <Drawer
-            className={classes.desktopDrawer}
-            variant="temporary"
-            anchor={theme.direction === "rtl" ? "right" : "left"}
-            open={this.state.mobileOpen}
-            onClose={this.handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper
-            }}
-            ModalProps={{
-              keepMounted: true // Better open performance on mobile.
-            }}
-          >
-            <Navigation onClick={this.handleDrawerToggle} />
-          </Drawer>
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <Drawer
-            className={classes.desktopDrawer}
-            variant="permanent"
-            open
-            classes={{
-              paper: classes.drawerPaper
-            }}
-          >
-            <Navigation />
-          </Drawer>
-        </Hidden>
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{
+            paper: classNames(
+              classes.drawerPaper,
+              !openDrawer && classes.drawerPaperClose
+            )
+          }}
+          open={openDrawer}
+        >
+          <div className={classes.toolbar}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </div>
+          <Navigation onClick={handleDrawerClose} />
+        </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Routes />

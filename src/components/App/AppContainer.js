@@ -1,31 +1,37 @@
 import React from "react";
 import App from "./App";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import { HashRouter } from "react-router-dom";
+import theme from "../../theme";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: "#484848",
-      main: "#212121",
-      dark: "#000000",
-      contrastText: "#fff"
-    },
-    secondary: {
-      light: "#ff6659",
-      main: "#d32f2f",
-      dark: "#9a0007",
-      contrastText: "#fff"
-    }
+class AppContainer extends React.Component {
+  state = {
+    handleDrawerOpen: false
+  };
+
+  handleDrawerOpen = () => {
+    this.setState({ openDrawer: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ openDrawer: false });
+  };
+
+  render() {
+    const { openDrawer } = this.state;
+
+    return (
+      <HashRouter>
+        <MuiThemeProvider theme={theme}>
+          <App
+            openDrawer={openDrawer}
+            handleDrawerClose={this.handleDrawerClose}
+            handleDrawerOpen={this.handleDrawerOpen}
+          />
+        </MuiThemeProvider>
+      </HashRouter>
+    );
   }
-});
+}
 
-const FAQsContainer = () => (
-  <HashRouter>
-    <MuiThemeProvider theme={theme}>
-      <App />
-    </MuiThemeProvider>
-  </HashRouter>
-);
-
-export default FAQsContainer;
+export default AppContainer;

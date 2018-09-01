@@ -3,7 +3,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Divider from "@material-ui/core/Divider";
-import Typography from "@material-ui/core/Typography";
 
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 import MicIcon from "@material-ui/icons/Mic";
@@ -23,44 +22,42 @@ const styles = theme => ({
   },
   list: {
     padding: "0%"
+  },
+  icon: {
+    marginRight: theme.spacing.unit * 3
   }
 });
 
 const Navigation = ({ classes, onClick }) => (
   <React.Fragment>
-    <div className={classes.toolbar}>
-      <Typography align="center" className={classes.title} variant="title">
-        TEDxIWU
-      </Typography>
-    </div>
     <Divider />
     <List className={classes.list}>
       <ListItem button onClick={onClick} component={Link} to="/">
-        <ListItemIcon>
+        <ListItemIcon className={classes.icon}>
           <HomeIcon />
         </ListItemIcon>
         Home
       </ListItem>
       <ListItem button onClick={onClick} component={Link} to="/Tickets">
-        <ListItemIcon>
+        <ListItemIcon className={classes.icon}>
           <EventSeatIcon />
         </ListItemIcon>
         Get Tickets
       </ListItem>
       <ListItem button onClick={onClick} component={Link} to="/Speakers">
-        <ListItemIcon>
+        <ListItemIcon className={classes.icon}>
           <MicIcon />
         </ListItemIcon>
         Our Speakers
       </ListItem>
       <ListItem button onClick={onClick} component={Link} to="/Team">
-        <ListItemIcon>
+        <ListItemIcon className={classes.icon}>
           <PeopleIcon />
         </ListItemIcon>
         Our Team
       </ListItem>
       <ListItem button onClick={onClick} component={Link} to="/FAQs">
-        <ListItemIcon>
+        <ListItemIcon className={classes.icon}>
           <QuestionAnswerIcon />
         </ListItemIcon>
         FAQs
