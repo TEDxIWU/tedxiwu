@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { HashRouter } from "react-router-dom";
+import { withRouter } from "react-router";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -59,7 +59,8 @@ const styles = theme => ({
 class App extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired
+    theme: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   };
 
   state = {
@@ -71,63 +72,65 @@ class App extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const {
+      classes,
+      theme,
+      location: { pathname }
+    } = this.props;
 
     return (
-      <HashRouter>
-        <div className={classes.root}>
-          <AppBar className={classes.appBar}>
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="Open drawer"
-                onClick={this.handleDrawerToggle}
-                className={classes.navIconHide}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography variant="title" color="inherit" noWrap>
-                TEDxIWU
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Hidden mdUp>
-            <Drawer
-              className={classes.desktopDrawer}
-              variant="temporary"
-              anchor={theme.direction === "rtl" ? "right" : "left"}
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              ModalProps={{
-                keepMounted: true // Better open performance on mobile.
-              }}
+      <div className={classes.root}>
+        <AppBar position="absolute" className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={this.handleDrawerToggle}
+              className={classes.navIconHide}
             >
-              <Navigation />
-            </Drawer>
-          </Hidden>
-          <Hidden smDown implementation="css">
-            <Drawer
-              className={classes.desktopDrawer}
-              variant="permanent"
-              open
-              classes={{
-                paper: classes.drawerPaper
-              }}
-            >
-              <Navigation />
-            </Drawer>
-          </Hidden>
-          <main className={classes.content}>
-            <div className={classes.toolbar} />
-            <Routes />
-          </main>
-        </div>
-      </HashRouter>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="title" color="inherit" noWrap>
+              TEDxIWU {pathname.substring(1)}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Hidden mdUp>
+          <Drawer
+            className={classes.desktopDrawer}
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={this.state.mobileOpen}
+            onClose={this.handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper
+            }}
+            ModalProps={{
+              keepMounted: true // Better open performance on mobile.
+            }}
+          >
+            <Navigation onClick={this.handleDrawerToggle} />
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <Drawer
+            className={classes.desktopDrawer}
+            variant="permanent"
+            open
+            classes={{
+              paper: classes.drawerPaper
+            }}
+          >
+            <Navigation />
+          </Drawer>
+        </Hidden>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          <Routes />
+        </main>
+      </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(App);
+export default withStyles(styles, { withTheme: true })(withRouter(App));

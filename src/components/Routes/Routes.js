@@ -9,10 +9,10 @@ import FAQs from "../FAQs";
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/tickets" component={Tickets} />
-    <Route exact path="/speakers" component={Speakers} />
-    <Route exact path="/team" component={Team} />
-    <Route exact path="/faq" component={FAQs} />
+    <Route exact path="/Tickets" component={Tickets} />
+    <Route exact path="/Speakers" component={Speakers} />
+    <Route exact path="/Team" component={Team} />
+    <Route exact path="/FAQs" component={FAQs} />
   </Switch>
 );
 

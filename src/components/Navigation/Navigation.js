@@ -22,36 +22,36 @@ const styles = theme => ({
   }
 });
 
-const Navigation = ({ classes }) => (
+const Navigation = ({ classes, onClick }) => (
   <React.Fragment>
     <div className={classes.toolbar} />
     <Divider />
     <List className={classes.list}>
-      <ListItem button component={Link} to="/">
+      <ListItem button onClick={onClick} component={Link} to="/">
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
         Home
       </ListItem>
-      <ListItem button component={Link} to="/tickets">
+      <ListItem button onClick={onClick} component={Link} to="/Tickets">
         <ListItemIcon>
           <EventSeatIcon />
         </ListItemIcon>
         Get Tickets
       </ListItem>
-      <ListItem button component={Link} to="/speakers">
+      <ListItem button onClick={onClick} component={Link} to="/Speakers">
         <ListItemIcon>
           <MicIcon />
         </ListItemIcon>
         Our Speakers
       </ListItem>
-      <ListItem button component={Link} to="/team">
+      <ListItem button onClick={onClick} component={Link} to="/Team">
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
         Our Team
       </ListItem>
-      <ListItem button component={Link} to="/faq">
+      <ListItem button onClick={onClick} component={Link} to="/FAQs">
         <ListItemIcon>
           <QuestionAnswerIcon />
         </ListItemIcon>

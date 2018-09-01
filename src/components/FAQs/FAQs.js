@@ -14,8 +14,6 @@ const styles = theme => ({
 
 const FAQs = ({ faqs, classes }) => (
   <React.Fragment>
-    <Typography variant="headline">FAQs</Typography>
-
     {faqs.map((faq, index) => (
       <Paper key={index} className={classes.paper}>
         <Typography variant="headline">{faq.question}</Typography>
