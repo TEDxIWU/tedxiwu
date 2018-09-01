@@ -19,8 +19,7 @@ const styles = theme => ({
     ...theme.mixins.toolbar
   },
   title: {
-    padding: theme.spacing.unit * 2,
-    textAlgin: "center"
+    paddingTop: theme.spacing.unit * 3
   },
   list: {
     padding: "0%"
@@ -30,7 +29,7 @@ const styles = theme => ({
 const Navigation = ({ classes, onClick }) => (
   <React.Fragment>
     <div className={classes.toolbar}>
-      <Typography className={classes.title} variant="title">
+      <Typography align="center" className={classes.title} variant="title">
         TEDxIWU
       </Typography>
     </div>
