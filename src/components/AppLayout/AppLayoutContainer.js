@@ -8,11 +8,11 @@ class AppLayoutContainer extends React.Component {
   };
 
   handleDrawerClose = () => {
-    this.setState(state => ({ mobileOpen: false }));
+    this.setState({ mobileOpen: false });
   };
 
   handleDrawerOpen = () => {
-    this.setState(state => ({ mobileOpen: true }));
+    this.setState({ mobileOpen: true });
   };
 
   render() {
