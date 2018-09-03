@@ -4,7 +4,7 @@ import HomeVideo from "./HomeVideo";
 
 const Home = () => (
   <React.Fragment>
-    <HomeVideo />
+    <HomeVideo buttonText="See 2019 Speakers" />
     <Typography variant="headline">
       Join us for TEDxIWU in February 2019
     </Typography>
