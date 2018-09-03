@@ -20,8 +20,7 @@ const styles = theme => ({
     position: "absolute",
     width: "100%",
     textAlgin: "center",
-    top: "10vw",
-    zindex: 9999
+    top: "22vw"
   }
 });
 
