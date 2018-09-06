@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import classNames from "classnames";
 
 const styles = theme => ({
   root: {
@@ -14,7 +15,8 @@ const styles = theme => ({
     top: theme.spacing.unit * -3,
     margin: "auto",
     width: "100vw",
-    height: "56vw"
+    height: "56vw",
+    overflow: "hidden"
   },
   button: {
     position: "absolute",
@@ -24,19 +26,38 @@ const styles = theme => ({
   }
 });
 
-const HomeVideo = ({ classes, buttonText, buttonOnClick }) => (
-  <div className={classes.root}>
-    <iframe
-      className={classes.video}
-      id="ytplayer"
-      width="x"
-      height="y"
-      type="text/html"
-      src={`https://www.youtube.com/embed/WQoRT964ppM?playsinline=1&disablekb=1&autoplay=1&loop=1&mute=1&controls=0&origin=${
-        window.location
-      }`}
-      frameborder="0"
-    />
+const HomeVideo = ({
+  classes,
+  buttonText,
+  buttonOnClick,
+  className,
+  showImage
+}) => (
+  <div className={classNames(classes.root, className)}>
+    {showImage && (
+      <div className={classes.video}>
+        <img
+          alt="heroImage"
+          style={{ width: "100%" }}
+          src="https://www.iwu.edu/tedx/800x533xtbankstedx.jpg.pagespeed.ic.ZqEjQMMFwZ.webp"
+        />
+      </div>
+    )}
+    {!showImage && (
+      <iframe
+        className={classes.video}
+        id="ytplayer"
+        width="x"
+        height="y"
+        type="text/html"
+        title="homeVideo"
+        src={`https://www.youtube.com/embed/WQoRT964ppM?playsinline=1&disablekb=1&autoplay=1&loop=1&mute=1&controls=0&origin=${
+          window.location
+        }`}
+        frameborder="0"
+      />
+    )}
+    <div className={classes.video} />
     {buttonText && (
       <div className={classes.button}>
         <Button

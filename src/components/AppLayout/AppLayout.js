@@ -80,7 +80,8 @@ const AppLayout = ({
           <MenuIcon />
         </IconButton>
         <Typography variant="title" color="inherit" noWrap>
-          TEDxIWU {pageTitle}
+          <span style={{ color: "#e62b1e" }}>TEDx</span>
+          IWU {pageTitle}
         </Typography>
       </Toolbar>
     </AppBar>
@@ -129,7 +130,7 @@ const AppLayout = ({
           keepMounted: true // Better open performance on mobile.
         }}
       >
-        <Navigation onClick={handleDrawerClose} />
+        <Navigation forceShowLogo={hideMenu} onClick={handleDrawerClose} />
       </Drawer>
     )}
     <main className={classes.content}>

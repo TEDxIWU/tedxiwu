@@ -4,6 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import Hidden from "@material-ui/core/Hidden";
 
 import EventSeatIcon from "@material-ui/icons/EventSeat";
 import MicIcon from "@material-ui/icons/Mic";
@@ -26,12 +27,15 @@ const styles = theme => ({
   }
 });
 
-const Navigation = ({ classes, onClick }) => (
+const Navigation = ({ classes, onClick, forceShowLogo }) => (
   <React.Fragment>
     <div className={classes.toolbar}>
-      <Typography align="center" className={classes.title} variant="title">
-        TEDxIWU
-      </Typography>
+      <Hidden mdUp={!forceShowLogo}>
+        <Typography align="center" className={classes.title} variant="title">
+          <span style={{ color: "#e62b1e" }}>TEDx</span>
+          IWU
+        </Typography>
+      </Hidden>
     </div>
     <Divider />
     <List className={classes.list}>
