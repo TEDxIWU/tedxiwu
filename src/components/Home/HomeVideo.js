@@ -36,11 +36,7 @@ const HomeVideo = ({
   <div className={classNames(classes.root, className)}>
     {showImage && (
       <div className={classes.video}>
-        <img
-          alt="heroImage"
-          style={{ width: "100%" }}
-          src="heroimage.jpg"
-        />
+        <img alt="heroImage" style={{ width: "100%" }} src="heroimage.jpg" />
       </div>
     )}
     {!showImage && (
