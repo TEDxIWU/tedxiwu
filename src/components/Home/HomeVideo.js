@@ -39,7 +39,7 @@ const HomeVideo = ({
         <img
           alt="heroImage"
           style={{ width: "100%" }}
-          src="https://www.iwu.edu/tedx/800x533xtbankstedx.jpg.pagespeed.ic.ZqEjQMMFwZ.webp"
+          src="heroimage.jpg"
         />
       </div>
     )}
