@@ -14,7 +14,10 @@ const Tickets = ({ classes }) => (
     <Typography variant="headline">
       Want to make sure you don't miss out on tickets?
     </Typography>
-    <Typography>Sign up to be notified when tickets are available.</Typography>
+    <Typography>
+      TEDxIWU will be Saturday, March 23, 2019. Sign up to be notified when
+      tickets are available.
+    </Typography>
     <Button
       href="https://docs.google.com/forms/d/e/1FAIpQLSfbqS7DUlACmNRudR0eMgcIoy-3KBEMprzFgNAbYlmE4wM4vw/viewform?usp=sf_link"
       variant="raised"

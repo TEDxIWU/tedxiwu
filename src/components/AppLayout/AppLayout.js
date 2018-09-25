@@ -40,10 +40,11 @@ const styles = theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawer: {
-    height: "100vh"
+    height: "100%"
   },
   drawerPaper: {
     width: drawerWidth,
+    height: "100%",
     [theme.breakpoints.up("md")]: {
       position: "relative"
     }

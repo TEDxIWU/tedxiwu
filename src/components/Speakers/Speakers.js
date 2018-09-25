@@ -13,16 +13,17 @@ const Speakers = ({ classes }) => (
   <React.Fragment>
     <Typography variant="headline">Interested in speaking?</Typography>
     <Typography>
-      Sign up to be notified when our speaker application goes live in
-      September.
+      Applications for 2019 speakers are now being accepted. All IWU faculty,
+      staff, students and alumni are welcome to apply. Applications are due by
+      Wednesday, September 12, 2018.
     </Typography>
     <Button
-      href="https://docs.google.com/forms/d/e/1FAIpQLSdYNQYXHtXK2FPcH9VfAvLcj8eNanz8m89BTcjO12cXaV10vg/viewform?usp=sf_link"
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfjR5TxiGAE1uUDKivktBZS0tl2Shligt95NDweagLpr-enJQ/viewform?usp=sf_link"
       variant="raised"
       color="secondary"
       className={classes.button}
     >
-      Sign Up
+      Apply Now
     </Button>
   </React.Fragment>
 );

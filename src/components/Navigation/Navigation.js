@@ -38,7 +38,7 @@ const Navigation = ({ classes, onClick, forceShowLogo }) => (
       </Hidden>
     </div>
     <Divider />
-    <List className={classes.list}>
+    <List className={classes.list} component="nav">
       <ListItem button onClick={onClick} component={Link} to="/">
         <ListItemIcon>
           <HomeIcon />

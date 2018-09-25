@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 
@@ -12,14 +13,24 @@ const styles = theme => ({
   },
   card: {
     height: "100%"
+  },
+  media: {
+    height: 400
   }
 });
 
 const Team = ({ teamMembers, classes }) => (
   <Grid container spacing={16} alignItems="stretch">
     {teamMembers.map((teamMember, index) => (
-      <Grid key={index} item xs={12} md={6} lg={4}>
+      <Grid key={index} item xs={12} sm={6} md={6} lg={4}>
         <Card className={classes.card}>
+          {teamMember.image && (
+            <CardMedia
+              className={classes.media}
+              image={teamMember.image}
+              title={teamMember.name}
+            />
+          )}
           <CardContent>
             <Typography variant="headline">{teamMember.name}</Typography>
             <Typography>{teamMember.description}</Typography>

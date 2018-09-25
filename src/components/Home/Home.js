@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import HomeVideo from "./HomeVideo";
+import HomeBanner from "./HomeBanner";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -23,7 +24,7 @@ const Home = ({ classes }) => (
     <Grid container spacing={16} alignItems="stretch">
       <Grid item xs={12}>
         <Typography className={classes.titleText} variant="display1">
-          Join us for TEDxIWU in February 2019
+          Saturday, March 23, 2019
         </Typography>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -31,17 +32,18 @@ const Home = ({ classes }) => (
           <CardContent>
             <Typography variant="headline">Interested in speaking?</Typography>
             <Typography>
-              Sign up to be notified when our speaker application goes live in
-              September.
+              Applications for 2019 speakers are now being accepted. All IWU
+              faculty, staff, students and alumni are welcome to apply.
+              Applications are due by Wednesday, September 12, 2018.
             </Typography>
           </CardContent>
           <CardActions>
             <Button
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdYNQYXHtXK2FPcH9VfAvLcj8eNanz8m89BTcjO12cXaV10vg/viewform?usp=sf_link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfjR5TxiGAE1uUDKivktBZS0tl2Shligt95NDweagLpr-enJQ/viewform?usp=sf_link"
               size="small"
               color="secondary"
             >
-              Sign Up
+              Apply Now
             </Button>
           </CardActions>
         </Card>
@@ -53,7 +55,8 @@ const Home = ({ classes }) => (
               Want to make sure you don't miss out on tickets?
             </Typography>
             <Typography>
-              Sign up to be notified when tickets are available.
+              TEDxIWU will be Saturday, March 23, 2018. Sign up to be notified
+              when tickets are available.
             </Typography>
           </CardContent>
           <CardActions>
@@ -66,6 +69,9 @@ const Home = ({ classes }) => (
             </Button>
           </CardActions>
         </Card>
+      </Grid>
+      <Grid item xs={12}>
+        <HomeBanner src="/banner.jpg" />
       </Grid>
       <Grid item xs={12}>
         <Typography variant="display1">Learn More About TEDx</Typography>
