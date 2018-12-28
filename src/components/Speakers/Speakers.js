@@ -1,13 +1,13 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import { Typography } from '@material-ui/core'
+import Button from '@material-ui/core/Button'
 
 const styles = theme => ({
   button: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
+    marginTop: theme.spacing.unit * 2,
+  },
+})
 
 const Speakers = ({ classes }) => (
   <React.Fragment>
@@ -26,6 +26,6 @@ const Speakers = ({ classes }) => (
       Apply Now
     </Button>
   </React.Fragment>
-);
+)
 
-export default withStyles(styles)(Speakers);
+export default withStyles(styles)(Speakers)
