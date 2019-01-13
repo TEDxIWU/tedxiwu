@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Tickets from '../components/Tickets'
+import withRoot from '../components/withRoot';
 
 class TicketsPage extends React.Component {
   render() {
@@ -12,4 +13,4 @@ class TicketsPage extends React.Component {
   }
 }
 
-export default TicketsPage
+export default withRoot(TicketsPage)

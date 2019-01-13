@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Home from '../components/Home'
+import withRoot from '../components/withRoot';
 
 class RootIndex extends React.Component {
   render() {
@@ -12,4 +13,4 @@ class RootIndex extends React.Component {
   }
 }
 
-export default RootIndex
+export default withRoot(RootIndex)

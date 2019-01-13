@@ -1,7 +1,5 @@
 import React from 'react'
 import Layout from './Layout'
-import { MuiThemeProvider } from '@material-ui/core/styles'
-import theme from '../../theme'
 
 class AppLayoutContainer extends React.Component {
   state = {
@@ -31,7 +29,6 @@ class AppLayoutContainer extends React.Component {
     const hideMenu = pathname === '/'
 
     return (
-      <MuiThemeProvider theme={theme}>
         <Layout
           pageTitle={pageTitle}
           handleDrawerClose={this.handleDrawerClose}
@@ -41,7 +38,6 @@ class AppLayoutContainer extends React.Component {
         >
           {children}
         </Layout>
-      </MuiThemeProvider>
     )
   }
 }
