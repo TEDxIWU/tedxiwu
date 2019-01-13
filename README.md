@@ -8,7 +8,7 @@ $ gatsby new contentful-starter https://github.com/contentful-userland/gatsby-co
 ```
 
 ## Code formatting
-This repo uses prettier eslint. Code may be formatted with `npm run format`
+This repo uses prettier eslint. Code may be formatted with `yarn run format`
 
 ## Deployment
 

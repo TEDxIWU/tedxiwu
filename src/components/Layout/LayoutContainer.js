@@ -29,15 +29,15 @@ class AppLayoutContainer extends React.Component {
     const hideMenu = pathname === '/'
 
     return (
-        <Layout
-          pageTitle={pageTitle}
-          handleDrawerClose={this.handleDrawerClose}
-          handleDrawerOpen={this.handleDrawerOpen}
-          mobileOpen={mobileOpen}
-          hideMenu={hideMenu}
-        >
-          {children}
-        </Layout>
+      <Layout
+        pageTitle={pageTitle}
+        handleDrawerClose={this.handleDrawerClose}
+        handleDrawerOpen={this.handleDrawerOpen}
+        mobileOpen={mobileOpen}
+        hideMenu={hideMenu}
+      >
+        {children}
+      </Layout>
     )
   }
 }

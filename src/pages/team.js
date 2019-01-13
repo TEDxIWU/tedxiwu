@@ -4,7 +4,7 @@ import get from 'lodash/get'
 import Grid from '@material-ui/core/Grid'
 import TeamMember from '../components/TeamMember'
 import Layout from '../components/Layout'
-import withRoot from '../components/withRoot';
+import withRoot from '../components/withRoot'
 
 class BlogIndex extends React.Component {
   render() {
