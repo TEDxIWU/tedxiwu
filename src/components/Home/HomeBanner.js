@@ -1,26 +1,26 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import classNames from "classnames";
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import classNames from 'classnames'
 
 const styles = theme => ({
   root: {
-    position: "relative",
-    height: "300px",
-    width: "100px"
+    position: 'relative',
+    height: '300px',
+    width: '100px',
   },
   imageContainer: {
-    position: "absolute",
+    position: 'absolute',
     left: theme.spacing.unit * -3,
     margin: 0,
     padding: 0,
-    width: "100vw",
-    height: "300px",
-    overflow: "hidden"
+    width: '100vw',
+    height: '300px',
+    overflow: 'hidden',
   },
   image: {
-    width: "100%"
-  }
-});
+    width: '100%',
+  },
+})
 
 const HomeBanner = ({ classes, src, className }) => (
   <div className={classNames(classes.root, className)}>
@@ -28,6 +28,6 @@ const HomeBanner = ({ classes, src, className }) => (
       <img className={classes.image} alt="banner image" src={src} />
     </div>
   </div>
-);
+)
 
-export default withStyles(styles)(HomeBanner);
+export default withStyles(styles)(HomeBanner)

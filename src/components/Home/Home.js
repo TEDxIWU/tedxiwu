@@ -1,22 +1,22 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import HomeVideo from "./HomeVideo";
-import HomeBanner from "./HomeBanner";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
+import React from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import HomeVideo from './HomeVideo'
+import HomeBanner from './HomeBanner'
+import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Grid from '@material-ui/core/Grid'
 
 const styles = theme => ({
   card: {
-    height: "100%"
+    height: '100%',
   },
   movie: {
-    marginBottom: theme.spacing.unit * 2
-  }
-});
+    marginBottom: theme.spacing.unit * 2,
+  },
+})
 
 const Home = ({ classes }) => (
   <React.Fragment>
@@ -130,6 +130,6 @@ const Home = ({ classes }) => (
       </Grid>
     </Grid>
   </React.Fragment>
-);
+)
 
-export default withStyles(styles)(Home);
+export default withStyles(styles)(Home)
