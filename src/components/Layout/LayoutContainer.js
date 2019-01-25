@@ -15,7 +15,12 @@ class AppLayoutContainer extends React.Component {
   }
 
   capitalizeFirstLetter = string => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
+    let newString = string.charAt(0).toUpperCase() + string.slice(1)
+    if (newString[newString.length - 1] === '/') {
+      newString = newString.substring(0, newString.length - 1)
+    }
+
+    return newString
   }
 
   render() {
