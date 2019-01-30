@@ -14,7 +14,7 @@ const styles = theme => ({
 
 const FAQ = ({ faq, classes, key }) => (
   <Paper key={key} className={classes.paper}>
-    <Typography variant="headline">{faq.question}</Typography>
+    <Typography variant="h4">{faq.question}</Typography>
     <div
       dangerouslySetInnerHTML={{ __html: faq.answer.childMarkdownRemark.html }}
     />

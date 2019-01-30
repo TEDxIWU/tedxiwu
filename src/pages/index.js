@@ -23,6 +23,7 @@ export const pageQuery = graphql`
     allContentfulBasicContent(sort: { fields: [order], order: ASC }) {
       edges {
         node {
+          id
           order
           title
           linkUrl

@@ -8,18 +8,20 @@ import Button from '@material-ui/core/Button'
 const ContentCard = ({ content, className }) => (
   <Card className={className}>
     <CardContent>
-      <Typography variant="headline">{content.title}</Typography>
+      <Typography variant="h5">{content.title}</Typography>
       <div
         dangerouslySetInnerHTML={{
           __html: content.description.childMarkdownRemark.html,
         }}
       />
     </CardContent>
-    <CardActions>
-      <Button href={content.linkUrl} size="small" color="secondary">
-        {content.linkText}
-      </Button>
-    </CardActions>
+    {content.linkText && (
+      <CardActions>
+        <Button href={content.linkUrl} size="small" color="secondary">
+          {content.linkText}
+        </Button>
+      </CardActions>
+    )}
   </Card>
 )
 

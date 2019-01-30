@@ -20,7 +20,7 @@ const TeamMember = ({ teamMember, classes }) => (
       />
     )}
     <CardContent>
-      <Typography variant="headline">{teamMember.name}</Typography>
+      <Typography variant="h5">{teamMember.name}</Typography>
       <Typography>{teamMember.title}</Typography>
     </CardContent>
   </Card>

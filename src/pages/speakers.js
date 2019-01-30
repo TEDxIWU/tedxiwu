@@ -12,7 +12,7 @@ class SpeakersPage extends React.Component {
     return (
       <Layout location={this.props.location}>
         {speakers.map(({ node }) => {
-          return <Speaker key={node.name} speaker={node} />
+          return <Speaker key={node.id} speaker={node} />
         })}
       </Layout>
     )
@@ -26,6 +26,7 @@ export const pageQuery = graphql`
     allContentfulSpeakers(sort: { fields: [order], order: ASC }) {
       edges {
         node {
+          id
           name
           talkTitle
           biography {

@@ -16,7 +16,7 @@ const styles = theme => ({
 const Speaker = ({ speaker, classes }) => (
   <React.Fragment>
     <Grid container spacing={16}>
-      <Grid item xs={12} sm={3} md={4} lg={5}>
+      <Grid item xs={12} sm={3}>
         <Card>
           {speaker.headshot && (
             <Img
@@ -26,9 +26,9 @@ const Speaker = ({ speaker, classes }) => (
           )}
         </Card>
       </Grid>
-      <Grid item xs md lg>
+      <Grid item xs sm>
         <Typography variant="h4">{speaker.name}</Typography>
-        <Typography variant="subtitle2">{speaker.talkTitle}</Typography>
+        <Typography variant="h6">{speaker.talkTitle}</Typography>
         <div
           dangerouslySetInnerHTML={{
             __html: speaker.biography.childMarkdownRemark.html,

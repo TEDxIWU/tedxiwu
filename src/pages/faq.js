@@ -15,7 +15,7 @@ class FAQPage extends React.Component {
         <Grid container spacing={16}>
           {faqs.map(({ node }) => {
             return (
-              <Grid item xs={12}>
+              <Grid key={node.id} item xs={12}>
                 <FAQ key={node.order} faq={node} />
               </Grid>
             )
@@ -33,6 +33,7 @@ export const pageQuery = graphql`
     allContentfulFaq(sort: { fields: [order], order: ASC }) {
       edges {
         node {
+          id
           order
           question
           answer {

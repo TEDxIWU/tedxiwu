@@ -1,7 +1,6 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
+import ContentCard from '../ContentCard'
 
 const styles = theme => ({
   button: {
@@ -9,23 +8,9 @@ const styles = theme => ({
   },
 })
 
-const Tickets = ({ classes }) => (
+const Tickets = ({ classes, content }) => (
   <React.Fragment>
-    <Typography variant="headline">
-      Want to make sure you don't miss out on tickets?
-    </Typography>
-    <Typography>
-      TEDxIWU will be Saturday, March 23, 2019. Sign up to be notified when
-      tickets are available.
-    </Typography>
-    <Button
-      href="https://docs.google.com/forms/d/e/1FAIpQLSfbqS7DUlACmNRudR0eMgcIoy-3KBEMprzFgNAbYlmE4wM4vw/viewform?usp=sf_link"
-      variant="raised"
-      color="secondary"
-      className={classes.button}
-    >
-      Sign Up
-    </Button>
+    <ContentCard content={content} />
   </React.Fragment>
 )
 
