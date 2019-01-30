@@ -3,11 +3,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import HomeVideo from './HomeVideo'
 import HomeBanner from './HomeBanner'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 import Grid from '@material-ui/core/Grid'
+import ContentCard from '../ContentCard'
 
 const styles = theme => ({
   card: {
@@ -18,118 +15,34 @@ const styles = theme => ({
   },
 })
 
-const Home = ({ classes }) => (
-  <React.Fragment>
-    <HomeVideo showImage className={classes.movie} />
-    <Grid container spacing={16} alignItems="stretch">
-      <Grid item xs={12}>
-        <Typography className={classes.titleText} variant="display1">
-          Saturday, March 23, 2019
-        </Typography>
+const Home = ({ classes, content }) => {
+  const bottomContent = content.slice(2)
+  return (
+    <React.Fragment>
+      <HomeVideo showImage className={classes.movie} />
+      <Grid container spacing={16} alignItems="stretch">
+        <Grid item xs={12}>
+          <Typography className={classes.titleText} variant="display1">
+            Saturday, March 23, 2019
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <ContentCard content={content[0]} className={classes.card} />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <ContentCard content={content[1]} className={classes.card} />
+        </Grid>
+        <Grid item xs={12}>
+          <HomeBanner src="/banner.jpg" />
+        </Grid>
+        {bottomContent.map(item => (
+          <Grid key={item.id} item xs={12}>
+            <ContentCard content={item} />
+          </Grid>
+        ))}
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="headline">Interested in speaking?</Typography>
-            <Typography>
-              Applications for 2019 speakers are now being accepted. All IWU
-              faculty, staff, students and alumni are welcome to apply.
-              Applications are due by Wednesday, September 12, 2018.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfjR5TxiGAE1uUDKivktBZS0tl2Shligt95NDweagLpr-enJQ/viewform?usp=sf_link"
-              size="small"
-              color="secondary"
-            >
-              Apply Now
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="headline">
-              Want to make sure you don't miss out on tickets?
-            </Typography>
-            <Typography>
-              TEDxIWU will be Saturday, March 23, 2018. Sign up to be notified
-              when tickets are available.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfbqS7DUlACmNRudR0eMgcIoy-3KBEMprzFgNAbYlmE4wM4vw/viewform?usp=sf_link"
-              size="small"
-              color="secondary"
-            >
-              Sign Up
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={12}>
-        <HomeBanner src="/banner.jpg" />
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="display1">Learn More About TEDx</Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="headline">
-              About TEDx, x = independently organized event
-            </Typography>
-            <Typography>
-              In the spirit of ideas worth spreading, TEDx is a program of
-              local, self-organized events that bring people together to share a
-              TED-like experience. At a TEDx event, TED Talks video and live
-              speakers combine to spark deep discussion and connection. These
-              local, self-organized events are branded TEDx, where x =
-              independently organized TED event. The TED Conference provides
-              general guidance for the TEDx program, but individual TEDx events
-              are self-organized. (Subject to certain rules and regulations.)
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-      <Grid item xs={12}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="headline">About TED</Typography>
-            <Typography>
-              TED is a nonprofit organization devoted to Ideas Worth Spreading.
-              Started as a four-day conference in California 30 years ago, TED
-              has grown to support its mission with multiple initiatives. The
-              two annual TED Conferences invite the world's leading thinkers and
-              doers to speak for 18 minutes or less. Many of these talks are
-              then made available, free, at TED.com. TED speakers have included
-              Bill Gates, Jane Goodall, Elizabeth Gilbert, Sir Richard Branson,
-              Nandan Nilekani, Philippe Starck, Ngozi Okonjo-Iweala, Sal Khan
-              and Daniel Kahneman.
-            </Typography>
-
-            <Typography>
-              The annual TED Conference takes place each spring in Vancouver,
-              British Columbia. TED's media initiatives include TED.com, where
-              new TED Talks are posted daily; the Open Translation Project,
-              which provides subtitles and interactive transcripts as well as
-              translations from volunteers worldwide; the educational initiative
-              TED-Ed. TED has established the annual TED Prize, where
-              exceptional individuals with a wish to change the world get help
-              translating their wishes into action; TEDx, which supports
-              individuals or groups in hosting local, self- organized TED-style
-              events around the world, and the TED Fellows program, helping
-              world-changing innovators from around the globe to amplify the
-              impact of their remarkable projects and activities.
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    </Grid>
-  </React.Fragment>
-)
+    </React.Fragment>
+  )
+}
 
 export default withStyles(styles)(Home)

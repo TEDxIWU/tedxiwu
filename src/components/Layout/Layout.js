@@ -88,7 +88,7 @@ const Layout = ({
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="title" color="inherit" noWrap>
+        <Typography component="h1" variant="h6" color="inherit" noWrap>
           <span style={{ color: '#e62b1e' }}>TEDx</span>
           IWU {pageTitle}
         </Typography>
