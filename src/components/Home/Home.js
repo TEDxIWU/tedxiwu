@@ -1,28 +1,30 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import HomeVideo from './HomeVideo'
-import HomeBanner from './HomeBanner'
-import Grid from '@material-ui/core/Grid'
 import ContentCard from '../ContentCard'
+import Grid from '@material-ui/core/Grid'
+import HomeBanner from './HomeBanner'
+import HomeVideo from './HomeVideo'
+import React from 'react'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   card: {
     height: '100%',
   },
   movie: {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
-})
+}))
 
-const Home = ({ classes, content }) => {
+const Home = ({ content }) => {
+  const classes = useStyles()
   const bottomContent = content.slice(2)
+
   return (
     <React.Fragment>
       <HomeVideo showImage className={classes.movie} />
-      <Grid container spacing={16} alignItems="stretch">
+      <Grid container spacing={2} alignItems="stretch">
         <Grid item xs={12}>
-          <Typography className={classes.titleText} variant="display1">
+          <Typography className={classes.titleText} variant="h2">
             Saturday, March 23, 2019
           </Typography>
         </Grid>
@@ -45,4 +47,4 @@ const Home = ({ classes, content }) => {
   )
 }
 
-export default withStyles(styles)(Home)
+export default Home

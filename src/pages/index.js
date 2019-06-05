@@ -1,22 +1,22 @@
-import React from 'react'
-import Layout from '../components/Layout'
+import Helmet from 'react-helmet'
 import Home from '../components/Home'
-import withRoot from '../components/withRoot'
-import get from 'lodash/get'
+import Layout from '../components/AppLayout'
+import React from 'react'
+import { graphql } from 'gatsby'
 
-class RootIndex extends React.Component {
-  render() {
-    const content = get(this, 'props.data.allContentfulBasicContent.edges')
+const RootIndex = ({
+  location,
+  data: {
+    allContentfulBasicContent: { edges: content },
+  },
+}) => (
+  <Layout location={location}>
+    <Helmet title="TEDxIWU - Home" />
+    <Home content={content.map(({ node }) => node)} />
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        <Home content={content.map(({ node }) => node)} />
-      </Layout>
-    )
-  }
-}
-
-export default withRoot(RootIndex)
+export default RootIndex
 
 export const pageQuery = graphql`
   query BasicContentIndexQuery {

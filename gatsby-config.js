@@ -20,16 +20,19 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  siteMetadata: {
+    title: 'TEDx IWU',
+  },
   pathPrefix: '/',
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-jsxstyle',
+    'gatsby-plugin-material-ui',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    }
+    },
   ],
 }

@@ -1,22 +1,19 @@
+import Layout from '../components/AppLayout'
 import React from 'react'
-import Layout from '../components/Layout'
-import Tickets from '../components/Tickets'
-import withRoot from '../components/withRoot'
-import get from 'lodash/get'
+import TicketsCard from '../components/TicketsCard'
 
-class RootIndex extends React.Component {
-  render() {
-    const content = get(this, 'props.data.allContentfulBasicContent.edges')
+const TicketsPage = ({
+  location,
+  data: {
+    allContentfulBasicContent: { edges: content },
+  },
+}) => (
+  <Layout location={location}>
+    <TicketsCard content={content[0].node} />
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        <Tickets content={content[0].node} />
-      </Layout>
-    )
-  }
-}
-
-export default withRoot(RootIndex)
+export default TicketsPage
 
 export const pageQuery = graphql`
   query TicketsContentIndexQuery {

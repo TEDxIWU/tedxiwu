@@ -1,32 +1,31 @@
+import FAQ from '../components/FAQ'
+import Grid from '@material-ui/core/Grid'
+import Helmet from 'react-helmet'
+import Layout from '../components/AppLayout'
 import React from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import FAQ from '../components/FAQ'
-import Layout from '../components/Layout'
-import withRoot from '../components/withRoot'
-import Grid from '@material-ui/core/Grid'
 
-class FAQPage extends React.Component {
-  render() {
-    const faqs = get(this, 'props.data.allContentfulFaq.edges')
+const FAQPage = ({
+  location,
+  data: {
+    allContentfulFaq: { edges: faqs },
+  },
+}) => (
+  <Layout location={location}>
+    <Helmet title="TEDxIWU - FAQ" />
+    <Grid container spacing={2}>
+      {faqs.map(({ node }) => {
+        return (
+          <Grid key={node.id} item xs={12}>
+            <FAQ key={node.order} faq={node} />
+          </Grid>
+        )
+      })}
+    </Grid>
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        <Grid container spacing={16}>
-          {faqs.map(({ node }) => {
-            return (
-              <Grid key={node.id} item xs={12}>
-                <FAQ key={node.order} faq={node} />
-              </Grid>
-            )
-          })}
-        </Grid>
-      </Layout>
-    )
-  }
-}
-
-export default withRoot(FAQPage)
+export default FAQPage
 
 export const pageQuery = graphql`
   query FAQIndexQuery {
