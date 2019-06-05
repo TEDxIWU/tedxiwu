@@ -1,32 +1,29 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
 import Grid from '@material-ui/core/Grid'
+import Layout from '../components/AppLayout'
+import React from 'react'
 import TeamMember from '../components/TeamMember'
-import Layout from '../components/Layout'
-import withRoot from '../components/withRoot'
+import { graphql } from 'gatsby'
 
-class BlogIndex extends React.Component {
-  render() {
-    const members = get(this, 'props.data.allContentfulTeam.edges')
+const TeamPage = ({
+  location,
+  data: {
+    allContentfulTeam: { edges: members },
+  },
+}) => (
+  <Layout location={location}>
+    <Grid container spacing={2} alignItems="stretch">
+      {members.map(({ node }) => {
+        return (
+          <Grid key={`${node.name} grid`} item xs={12} sm={6} md={6} lg={4}>
+            <TeamMember key={node.name} teamMember={node} />
+          </Grid>
+        )
+      })}
+    </Grid>
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        <Grid container spacing={16} alignItems="stretch">
-          {members.map(({ node }) => {
-            return (
-              <Grid key={`${node.name} grid`} item xs={12} sm={6} md={6} lg={4}>
-                <TeamMember key={node.name} teamMember={node} />
-              </Grid>
-            )
-          })}
-        </Grid>
-      </Layout>
-    )
-  }
-}
-
-export default withRoot(BlogIndex)
+export default TeamPage
 
 export const pageQuery = graphql`
   query TeamIndexQuery {

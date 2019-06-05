@@ -1,25 +1,24 @@
+import Helmet from 'react-helmet'
+import Layout from '../components/AppLayout'
 import React from 'react'
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
 import Speaker from '../components/Speaker'
-import Layout from '../components/Layout'
-import withRoot from '../components/withRoot'
+import { graphql } from 'gatsby'
 
-class SpeakersPage extends React.Component {
-  render() {
-    const speakers = get(this, 'props.data.allContentfulSpeakers.edges')
+const SpeakersPage = ({
+  location,
+  data: {
+    allContentfulSpeakers: { edges: speakers },
+  },
+}) => (
+  <Layout location={location}>
+    <Helmet title="TEDxIWU - Speakers" />
+    {speakers.map(({ node }) => {
+      return <Speaker key={node.id} speaker={node} />
+    })}
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        {speakers.map(({ node }) => {
-          return <Speaker key={node.id} speaker={node} />
-        })}
-      </Layout>
-    )
-  }
-}
-
-export default withRoot(SpeakersPage)
+export default SpeakersPage
 
 export const pageQuery = graphql`
   query SpeakersIndexQuery {
